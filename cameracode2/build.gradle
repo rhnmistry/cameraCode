@@ -1,6 +1,30 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+ext {
+    bintrayRepo = 'CameraOverlay'
+    bintrayName = 'CameraOverlay'
+
+    publishedGroupId = 'com.bito1.CameraOverlay'
+    libraryName = 'CameraOverlay'
+    artifact = 'CameraOverlay'
+
+    libraryDescription = ' '
+
+    siteUrl = 'https://github.com/rhnmistry'
+    gitUrl = 'https://github.com/rhnmistry/cameraCode.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'rhnmistry'
+    developerName = 'Rohan Mistry'
+    developerEmail = 'rohan.bito1@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
@@ -29,34 +53,9 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.+'
     testCompile 'junit:junit:4.12'
-}
+    // Image Cropping
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
 
-// If your directory matches the name, you do not need to set archivesBaseName.
-install {
-    repositories.mavenInstaller {
-        pom.project {
-            group "com.bito1.cameracode"
-            artifactId "camera-code"
-            version "1.0.0"
-        }
-    }
 }
-bintray {
-    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
-    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
-    // jFrog plugin must be declared for this line to work
-    configurations = ['archives']
-    // Package info for BinTray
-    pkg {
-        repo = 'maven'
-        name = 'android-oauth-handler'
-        userOrg = user
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/bintray/gradle-bintray-plugin.git'
-        version {
-            name = '0.1'
-            desc = 'Gradle Bintray Plugin 1.0 final'
-            vcsTag = '0.1'
-        }
-    }
-}
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CameraCode</string>
+    <string name="take_new_photo">Take a new photo</string>
+    <string name="select_from_photo">Select from gallery</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="cancel">Cancel</string>
 </resources>
